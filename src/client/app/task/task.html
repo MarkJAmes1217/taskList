@@ -1,0 +1,68 @@
+<br>
+<div id="container" class="container col-md-12 col-lg-12">
+    <div class="task-container">
+        <div class="task-body col-sm-12 col-xs-12 col-lg-12 col-md-12">
+            <div class="task-title center-content">Todo</div>
+            <div class="task-list" dnd-list="vm.todoList">
+                <div class="task-info" ng-repeat="task in vm.todoList"
+                dnd-draggable="task"
+                dnd-moved="vm.todoList.splice($index, 1)"
+                dnd-effect-allowed="move"
+                >
+                    <div class="todo">
+                        {{$index + 1}}. {{task.title}}
+                    </div>
+                </div>
+            </div>
+            <div class="task-title center-content" ng-click="vm.createNewTask('Todo Task')">Add Todo</div>
+        </div>
+    </div>
+
+    <div class="task-container">
+        <div class="task-body col-sm-12 col-xs-12 col-lg-12 col-md-12">
+            <div class="task-title center-content">Done</div>
+            <div class="task-list" dnd-list="vm.doneList">
+                <div class="task-info" ng-repeat="task in vm.doneList"
+                dnd-draggable="task"
+                dnd-moved="vm.doneList.splice($index, 1)"
+                dnd-effect-allowed="move"
+                >
+                    <div class="todo">
+                       {{$index + 1}}. {{task.title}}
+                    </div>
+                </div>
+            </div>
+            <div class="task-title center-content" ng-click="vm.createNewTask('Finish Task')">Add Done</div>
+        </div>
+    </div>
+
+    <div class="create-task-container" ng-if="vm.taskFor !== ''">
+        <form ng-submit="vm.submitTask()">
+            <div class="create-task-body col-sm-12 col-xs-12 col-lg-12 col-md-12">
+                <div class="info-container">    
+                    <div class="about">
+                        Add task to:
+                    </div>
+                    <div class="info">
+                        <input type="text" class="form-control" placeholder="Task to" value="{{vm.taskFor}}" disabled required>
+                    </div>
+                </div>handleChange
+                <div class="info-container">    
+                    <div class="about">
+                        Task Title:
+                    </div>
+                    <div class="info">
+                        <input type="text" class="form-control" placeholder="Task" ng-keyup="vm.handleChange($event)" name="taskTitle" required value="{{vm.taskInput.taskTitle}}" autocomplete="off" />
+                    </div>
+                </div>
+                <div class="info-container center-content" ng-if="vm.errorReport !== ''">
+                    <span class="message">{{vm.errorReport}}</span>
+                </div>
+                <div class="info-container center-content">    
+                    <button class="btn btn-primary">SUBMIT</button>
+                    <button class="btn btn-warning" ng-click="vm.createNewTask('')">CANCEL</button>
+                </div>      
+            </div>
+        </form>    
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-header">
+    <a ui-sref="admin" class="navbar-brand"><span class="brand-title">Home</span></a>
+    <a ui-sref="task" class="navbar-brand"><span class="brand-title">Task</span></a>
+  </div>
+  <div class="navbar-collapse collapse" uib-collapse="isCollapsed">
+    <div class="pull-right navbar-logo">
+      <ul class="nav navbar-nav pull-right">
+        <li>
+          <a ng-href="{{vm.navline.link}}" target="_blank">
+                        {{vm.navline.text}}
+                    </a>
+        </li>
+        <li class="dropdown dropdown-big">
+          <a href="http://www.angularjs.org" target="_blank">
+            <img src="images/AngularJS-small.png" />
+          </a>
+        </li>
+        <li>
+          <a href="http://www.gulpjs.com/" target="_blank">
+            <img src="images/gulp-tiny.png" width="20" height="20" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
